@@ -1,12 +1,15 @@
 <div class="row deck">
+	<div class="col-md-1"></div>
 	<div id="infobox-wrapper" class="col-md-4">
 		<div id="infobox" class="card">
-			<p>
+			<!-- <p>
 				<a class="title">Pengantar</a>
-			</p>
-			<p>Website ini dibuat untuk mengisi kesenggangan di bulan Mei.</p>
+			</p> -->
 			<p>
-				Segala konten di web ini didapat dari <a href="http://reddit.com/r/aww">r/aww</a>.
+				Website ini dibuat untuk mengisi kesenggangan di bulan Mei.
+			</p>
+			<p>
+				Semua gambar-gambar hewan lucu di website ini didapat dari <a href="http://reddit.com/r/aww">r/aww</a>.
 			</p>
 			<hr>
 			<div class="accordion" id="accordion1">
@@ -45,16 +48,17 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-md-8">
+	<div class="col-md-6">
 		<div class="card" ng-repeat="item in items" >
-			<a class="title" href="{{item.raw_url}}">
-				{{item.title}}
-			</a>
+			<p>
+				<a class="title" href="{{item.raw_url}}">{{item.title}}</a>
+			</p>
 			<p class="info">{{item.ups}} upvotes - <a href="{{'http://reddit.com' + item.permalink}}">{{item.num_comments}} comments</a></p>
-			<img src="{{item.raw_url}}"/>
+			<img ng-repeat="url in item.img_urls" ng-src="{{url}}"/><img>
 		</div>
 		<div id="loadmorebox" class="card">
 			<a class="" href="">LOAD MORE</a>
 		</div>
 	</div>
+	<div class="col-md-1"></div>
 </div>

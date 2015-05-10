@@ -4,6 +4,7 @@ var request = require('request');
 var app     = express();
 var Printer = require('./modules/printer.js');
 var Crawler = require('./modules/crawler.js');
+var DH = require('./modules/datahandler.js');
 
 var argv    = require('argh').argv;
 
@@ -16,7 +17,8 @@ if ((argv['url']!=undefined)&&(argv['page']!=undefined)) {
     url = argv['url']
 
     c = new Crawler(limit)
-    c.crawl(url)
+    // c.crawl(url, Printer.print_output)
+    c.crawl(url, DH.item_process)
 
 } else {
     console.log('need url & page parameter!')
