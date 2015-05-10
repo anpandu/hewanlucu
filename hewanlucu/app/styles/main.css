@@ -102,6 +102,15 @@ div.deck {
   margin-right: 0px;
   margin-left: 0px;
   }
+  div#infobox{
+    width: 100%;
+    }
+    div#infobox .title {
+      color: #000;
+      font-size: 24px;
+      font-weight: 900;
+      text-decoration: none;
+      }
   div.card {
     margin: 10px 0;
     background-color: #fff;
@@ -123,4 +132,8 @@ div.deck {
     div.card .title:hover {
       color: #55e;
       }
+
+div#loadmorebox {
+  text-align: center;
+}
 

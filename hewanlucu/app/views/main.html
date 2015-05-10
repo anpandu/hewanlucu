@@ -1,11 +1,60 @@
-<div ng-repeat="item in items" class="row deck">
-	<div class="col-md-4">
+<div class="row deck">
+	<div id="infobox-wrapper" class="col-md-4">
+		<div id="infobox" class="card">
+			<p>
+				<a class="title">Pengantar</a>
+			</p>
+			<p>Website ini dibuat untuk mengisi kesenggangan di bulan Mei.</p>
+			<p>
+				Segala konten di web ini didapat dari <a href="http://reddit.com/r/aww">r/aww</a>.
+			</p>
+			<hr>
+			<div class="accordion" id="accordion1">
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<p>
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse-technologies">
+								Technologies
+							</a>
+						</p>
+					</div>
+					<div id="collapse-technologies" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<p>
+								Crawler : nodejs<br>
+								Backend : nodejs + mongodb<br>
+								Front-end : angularjs + bootstrap
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="accordion-group">
+					<div class="accordion-heading">
+						<p>
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse-about">
+								About
+							</a>
+						</p>
+					</div>
+					<div id="collapse-about" class="accordion-body collapse">
+						<div class="accordion-inner">
+							<p>Dibuat sepenuh <span class="glyphicon glyphicon-heart"></span></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="col-md-8 card">
-		<a class="title" href="{{'http://reddit.com' + item.permalink}}">
-			{{item.title}}
-		</a>
-		<p class="info">{{item.ups}} upvotes - <a href="{{'http://reddit.com' + item.permalink}}">{{item.num_comments}} comments</a></p>
-		<img src="{{item.raw_url}}"/>
+	<div class="col-md-8">
+		<div class="card" ng-repeat="item in items" >
+			<a class="title" href="{{item.raw_url}}">
+				{{item.title}}
+			</a>
+			<p class="info">{{item.ups}} upvotes - <a href="{{'http://reddit.com' + item.permalink}}">{{item.num_comments}} comments</a></p>
+			<img src="{{item.raw_url}}"/>
+		</div>
+		<div id="loadmorebox" class="card">
+			<a class="" href="">LOAD MORE</a>
+		</div>
 	</div>
 </div>
