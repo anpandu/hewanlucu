@@ -6,6 +6,7 @@ DataHandler.prototype.count = 0
 DataHandler.prototype.item_transform = function (item) {
 	var result = {}
 	result['id'] = item['data']['id']
+	result['subreddit'] = item['data']['subreddit']
 	result['title'] = item['data']['title']
 	result['domain'] = item['data']['domain']
 	result['raw_url'] = item['data']['url']

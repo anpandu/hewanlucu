@@ -1,5 +1,7 @@
 {
 	"mongo_domain": "localhost",
+	"mongo_port": "27017",
+	"mongo_database": "test",
 	"mongo_user": "",
 	"mongo_pwd": ""
 }
