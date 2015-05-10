@@ -17,8 +17,7 @@ if ((argv['url']!=undefined)&&(argv['page']!=undefined)) {
     url = argv['url']
 
     c = new Crawler(limit)
-    // c.crawl(url, Printer.print_output)
-    c.crawl(url, DH.item_process)
+    c.crawl(url, Printer.print_output)
 
 } else {
     console.log('need url & page parameter!')

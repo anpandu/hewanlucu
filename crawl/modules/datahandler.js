@@ -20,15 +20,14 @@ DataHandler.prototype.item_transform = function (item) {
     result['num_comments'] = item['data']['num_comments']
 	return result
 }
-DataHandler.prototype.item_process = function (results, id, callback) {
+DataHandler.prototype.item_process = function (results, callback) {
 	items = results['data']['children']
 	items = items.map(DataHandler.prototype.item_transform)
 	items.sort(function(a,b){return (a['raw_created']<b['raw_created']) ? 1 : -1;})
-	// console.log(items)
-	console.log(JSON.stringify(items))
-	callback()
+	if (callback != undefined)
+		callback(items)
 }
 
 
 
-module.exports = new DataHandler ();;
+module.exports = new DataHandler ();
