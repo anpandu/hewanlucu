@@ -1,0 +1,5 @@
+{
+	"mongo_domain": "localhost",
+	"mongo_user": "",
+	"mongo_pwd": ""
+}
