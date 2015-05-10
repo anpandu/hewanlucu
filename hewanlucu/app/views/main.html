@@ -1,0 +1,11 @@
+<div ng-repeat="item in items" class="row deck">
+	<div class="col-md-4">
+	</div>
+	<div class="col-md-8 card">
+		<a class="title" href="{{'http://reddit.com' + item.permalink}}">
+			{{item.title}}
+		</a>
+		<p class="info">{{item.ups}} upvotes - <a href="{{'http://reddit.com' + item.permalink}}">{{item.num_comments}} comments</a></p>
+		<img src="{{item.raw_url}}"/>
+	</div>
+</div>
