@@ -17,6 +17,7 @@ DataHandler.prototype.item_transform = function (item) {
     result['ups'] = item['data']['ups']
     result['created'] = new Date(1000*item['data']['created'])
     result['raw_created'] = item['data']['created']
+    result['mongo_created'] = new Date()
     result['permalink'] = item['data']['permalink']
     result['num_comments'] = item['data']['num_comments']
 	return result
