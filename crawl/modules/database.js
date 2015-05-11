@@ -14,7 +14,7 @@ Database.prototype.test_connect = function () {
 
 Database.prototype.insert_item = function (item) {
 	Database.prototype.mongo_client.connect(Database.prototype.url, function(err, db) {
-		db.collection('reddit_items').insertOne(item, function (err, result) {
+		db.collection('reddititems').insertOne(item, function (err, result) {
 			db.close()
 		})
 	})
@@ -22,7 +22,7 @@ Database.prototype.insert_item = function (item) {
 
 Database.prototype.insert_items = function (items, callback) {
 	Database.prototype.mongo_client.connect(Database.prototype.url, function(err, db) {
-		db.collection('reddit_items').insertMany(items, function (err, result) {
+		db.collection('reddititems').insertMany(items, function (err, result) {
 			db.close()
 			callback()
 		})
