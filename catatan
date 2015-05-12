@@ -1,1 +1,2 @@
-node main.js --url 'http://www.reddit.com/r/aww/top.json?sort=top&t=all' --page 10000
+node crawltofile.js --url 'http://www.reddit.com/r/aww/top.json?sort=top&t=all' --page 10000
+node filetodatabase.js

@@ -17,8 +17,13 @@ Crawler.prototype.crawl = function(url, callback) {
             after = result['data']['after']
 
             if (after) {
-                base_url = (url.indexOf('&count=')==-1) ? url : url.substring(0, url.indexOf('&count='))
-                next_url = base_url + '&count=' + Crawler.prototype.count + '&after=' + after   
+                base_url = url
+                base_url = (base_url.indexOf('?count=')==-1) ? base_url : base_url.substring(0, base_url.indexOf('?count='))
+                base_url = (base_url.indexOf('&count=')==-1) ? base_url : base_url.substring(0, base_url.indexOf('&count='))
+                if (base_url.indexOf('?')==-1)
+                    next_url = base_url + '?count=' + Crawler.prototype.count + '&after=' + after  
+                else
+                    next_url = base_url + '&count=' + Crawler.prototype.count + '&after=' + after   
                 console.log(Crawler.prototype.count/25 + ' ' +next_url)
                 callback(result, Crawler.prototype.count/25, function() {
                     if (Crawler.prototype.count < Crawler.prototype.limit*25)
