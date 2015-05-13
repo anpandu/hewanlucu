@@ -42,4 +42,21 @@ Crawler.prototype.crawl = function(url, callback) {
     })
 }
 
+Crawler.prototype.crawl_single = function(url, callback) {
+    Crawler.prototype.request(url, function(error, response, html){
+        Crawler.prototype.count += 25
+        try {
+            result = JSON.parse(html)
+            callback(result, url, function() {
+                Crawler.prototype.crawl_single(url, callback)  
+            })
+        }
+        catch(err) {
+            console.log(err.message)
+            Crawler.prototype.crawl_single(url, callback)  
+        }
+        
+    })
+}
+
 module.exports = Crawler;

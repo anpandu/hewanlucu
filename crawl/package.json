@@ -5,10 +5,11 @@
   "main": "server.js",
   "author": "Scotch",
   "dependencies": {
-    "express": "latest",
-    "request": "latest",
-    "cheerio": "latest",
     "argh": "~0.1.3",
-    "mongodb" : "latest"
+    "cheerio": "latest",
+    "express": "latest",
+    "moment": "^2.10.3",
+    "mongodb": "latest",
+    "request": "latest"
   }
 }
