@@ -18,11 +18,12 @@ if ((argv['url']!=undefined)&&(argv['timer']!=undefined)) {
 			console.log(moment().format('dddd DD-MM-YYYY hh:mm:ss') + " crawl_finish " + url)
 			DataHandler.item_process(results, function(res){
 				db = new Database(config)
-				db.insert_items(res, function() {
-					setTimeout(function() {
-						callback() 
-					}, timer)
+				res.forEach(function (element) {
+					db.upsert_item(element)
 				})
+				setTimeout(function() {
+					callback() 
+				}, timer)
 			})
 	    })
 	})

@@ -20,6 +20,22 @@ Database.prototype.insert_item = function (item) {
 	})
 }
 
+Database.prototype.upsert_item = function (item) {
+	Database.prototype.mongo_client.connect(Database.prototype.url, function(err, db) {
+		db.collection('reddititems').findOne({'r_id': item['r_id']}, function(err, item_found) {
+			if (item_found) {
+				console.log('update ' + item['r_id'])
+				db.collection('reddititems').update({_id: item_found['_id']}, item);
+			} else {
+				console.log('insert ' + item['r_id'])
+				db.collection('reddititems').insertOne(item, function (err, result) {
+					db.close()
+				})
+			}
+		})
+	})
+}
+
 Database.prototype.insert_items = function (items, callback) {
 	Database.prototype.mongo_client.connect(Database.prototype.url, function(err, db) {
 		db.collection('reddititems').insertMany(items, function (err, result) {
