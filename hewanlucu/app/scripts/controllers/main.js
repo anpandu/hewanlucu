@@ -43,22 +43,25 @@ angular.module('hewanlucuApp')
 	    }
 	];
 	$scope.after = '';
+	$scope.load_text = 'LOAD MORE';
 
 
 	$scope.loadmongo = function () {
-		var url = 'http://localhost:1337/reddititems/get?n=10';
+		$scope.load_text = "loading ...";
+		var url = 'http://localhost:1337/reddititems/get?n=10' + (($scope.after=='') ? '' : '&after='+$scope.after);
 		$http
 		.get(url)
 		.success(function(data, status, headers, config) {
-			data.forEach(function(e){
-				$scope.items.push(e);
-			});
-			console.log(data);
+			if (data.length>0) {
+				$scope.after = data[data.length-1]['r_id'];
+				data.forEach(function(e){
+					$scope.items.push(e);
+				});
+			}
+			$scope.load_text = "LOAD MORE";
 		})
 		.error(function(data, status, headers, config) {
-			alert('x');	
-		// called asynchronously if an error occurs
-		// or server returns response with an error status.
+			$scope.load_text = "LOAD MORE";
 		});	
 	}
 
