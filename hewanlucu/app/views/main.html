@@ -49,7 +49,7 @@
 		</div>
 	</div>
 	<div class="col-md-6">
-		<div class="card" ng-repeat="item in items" >
+		<div class="card" ng-repeat="item in items track by $index" >
 			<p>
 				<a class="title" href="{{item.raw_url}}">{{item.title}}</a>
 			</p>
@@ -57,7 +57,7 @@
 			<img ng-repeat="url in item.img_urls" ng-src="{{url}}"/><img>
 		</div>
 		<div id="loadmorebox" class="card">
-			<a class="" href="">LOAD MORE</a>
+			<a ng-click="loadmongo()" class="" href="">LOAD MORE</a>
 		</div>
 	</div>
 	<div class="col-md-1"></div>
