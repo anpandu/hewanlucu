@@ -18,9 +18,12 @@ module.exports = {
 		    })
 		} else {
 			Reddititems.find({'r_id':after}).exec( function(err, anchor) {
-				Reddititems.find({'mongo_created': { "$gt" : anchor[0]['mongo_created'] }}).limit(n).exec( function(err, result) {
-					res.json(result)
-				})
+				if (anchor.length>0)
+					Reddititems.find({'created': { "$gt" : anchor[0]['created'] }}).limit(n).exec( function(err, result) {
+						res.json(result)
+					})
+				else
+					res.json([])
 		    })
 		}
 	}
