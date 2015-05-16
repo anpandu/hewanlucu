@@ -4,8 +4,8 @@ var DB = require('./modules/database.js');
 
 
 files = []
-for (var i = 1; i <= 40; i++) {
-	files.push('../output/res_aww/output_'+i+'.json')
+for (var i = 1; i <= 103; i++) {
+	files.push('../output/res_aww_sorted/output_'+i+'.json')
 };
 
 var importFiles = function (files, config, callback) {
@@ -16,7 +16,9 @@ var importFiles = function (files, config, callback) {
 				db = new DB(config)
 				db.insert_items(res, function() {
 					console.log(file)
-					importFiles(files, config)
+					setTimeout(function() {
+						importFiles(files, config)
+					}, 500)
 				})
 			})
 		})
