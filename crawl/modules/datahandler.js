@@ -10,7 +10,7 @@ DataHandler.prototype.item_transform = function (item) {
 	result['title'] = item['data']['title']
 	result['domain'] = item['data']['domain']
 	result['raw_url'] = item['data']['url']
-	if (result['domain']=='imgur.com')
+	if (result['domain']=='imgur.com' && (result['raw_url'].indexOf('.gifv')==-1))
 		result['img_urls'] = [result['raw_url'].replace('http://', 'http://i.')+'.jpg']
 	else
 		result['img_urls'] = [result['raw_url'].replace('.gifv', '.gif')]
@@ -20,6 +20,11 @@ DataHandler.prototype.item_transform = function (item) {
     result['mongo_created'] = new Date()
     result['permalink'] = item['data']['permalink']
     result['num_comments'] = item['data']['num_comments']
+    result['is_album'] = (
+    	result['raw_url'].indexOf('imgur.com/gallery/')>-1
+    	|| result['raw_url'].indexOf('imgur.com/a/')>-1
+    	|| result['raw_url'].indexOf('m.imgur.com/')>-1
+    	)
 	return result
 }
 DataHandler.prototype.item_process = function (results, callback) {

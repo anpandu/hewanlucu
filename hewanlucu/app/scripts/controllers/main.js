@@ -26,22 +26,7 @@ angular.module('hewanlucuApp')
       'http://i.imgur.com/Eq0Z7vm.jpg',
       'http://i.imgur.com/XxMKKi1.jpg'
     ];
-    $scope.items = [
-	    {
-	        "id": "32dx81",
-	        "title": "Our 3 day old baby chicks enjoying the warmth from my husband's coffee mug.",
-	        "domain": "imgur.com",
-	        "raw_url": "http://imgur.com/oPis3xl",
-	        "img_urls": [
-	            "http://i.imgur.com/oPis3xl.jpg"
-	        ],
-	        "ups": 6630,
-	        "created": "2015-04-13T01:10:58.000Z",
-	        "raw_created": 1428887458,
-	        "permalink": "/r/aww/comments/32dx81/our_3_day_old_baby_chicks_enjoying_the_warmth/",
-	        "num_comments": 1149
-	    }
-	];
+    $scope.items = [];
 	$scope.after = '';
 	$scope.load_text = 'LOAD MORE';
 

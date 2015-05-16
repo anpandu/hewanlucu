@@ -18,7 +18,7 @@ var importFiles = function (files, config, callback) {
 					console.log(file)
 					setTimeout(function() {
 						importFiles(files, config)
-					}, 500)
+					}, 5000)
 				})
 			})
 		})

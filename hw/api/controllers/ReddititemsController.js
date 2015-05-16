@@ -12,16 +12,22 @@ module.exports = {
     get:function(req,res) {
 		var n = req.param('n')
 		var after = req.param('after')
+		var param = {
+			'is_album' : false,
+			'ups' : { "$gt" : 100}
+		}
 		if (after === undefined) {
-			Reddititems.find().limit(n).exec( function(err, result) {
+			Reddititems.find(param).limit(n).exec( function(err, result) {
 				res.json(result)
 		    })
 		} else {
 			Reddititems.find({'r_id':after}).exec( function(err, anchor) {
-				if (anchor.length>0)
-					Reddititems.find({'created': { "$lt" : anchor[0]['created'] }}).limit(n).exec( function(err, result) {
+				if (anchor.length>0) {
+					param['created'] = { "$lt" : anchor[0]['created'] }
+					Reddititems.find(param).limit(n).exec( function(err, result) {
 						res.json(result)
-					})
+					})	
+				}
 				else
 					res.json([])
 		    })
