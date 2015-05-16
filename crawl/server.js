@@ -23,14 +23,14 @@ app.get('/get', function(req, res){
     var after = req.query.after
     var param = {
         'is_album' : false,
-        'ups' : { "$gt" : 100}
+        'ups' : { "$gt" : 250}
     }
 
     FH.getconfig(function(config) {
         db = new DB(config)
         MongoClient.connect(db.url, function(err, db) {
             if (after === undefined) {
-                db.collection('reddititems').find(param).sort({'_id':-1}).limit(n, function(err, result) {
+                db.collection('reddititems').find(param, {}, {'limit':n, "sort": [['_id','desc']]}, function(err, result) {
                     result.toArray(function (err, res_arr) {
                         res.json(res_arr)
                         console.log(JSON.stringify(param))
@@ -40,7 +40,7 @@ app.get('/get', function(req, res){
                 db.collection('reddititems').findOne({'r_id':after}, function(err, doc) {
                     if (doc) {
                         param['created'] = { "$lt" : doc['created'] }
-                        db.collection('reddititems').find(param).sort({'_id':-1}).limit(n, function(err, result) {
+                        db.collection('reddititems').find(param, {}, {'limit':n, "sort": [['_id','desc']]}, function(err, result) {
                             result.toArray(function (err, res_arr) {
                                 res.json(res_arr)
                                 console.log(JSON.stringify(param))
