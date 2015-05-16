@@ -51,7 +51,7 @@
 	<div class="col-md-6" ng-init="loadmongo()">
 		<div class="card" ng-repeat="item in items track by $index">
 			<p>
-				<a class="title" href="{{item.raw_url}}">{{item.title}}</a>
+				<a class="title" href="{{item.raw_url}}" target="_blank">{{item.title}}</a>
 			</p>
 			<input type="hidden" value="{{item.r_id}}">
 			<p class="info">{{item.ups}} upvotes - <a href="{{'http://reddit.com' + item.permalink}}">{{item.num_comments}} comments</a></p>
