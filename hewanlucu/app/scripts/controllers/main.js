@@ -33,7 +33,7 @@ angular.module('hewanlucuApp')
 
 	$scope.loadmongo = function () {
 		$scope.load_text = "loading ...";
-		var url = 'http://localhost:8081/get?n=10' + (($scope.after=='') ? '' : '&after='+$scope.after);
+		var url = 'http://107.161.27.119:8081/get?n=10' + (($scope.after=='') ? '' : '&after='+$scope.after);
 		$http
 		.get(url)
 		.success(function(data, status, headers, config) {
