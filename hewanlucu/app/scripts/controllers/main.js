@@ -38,6 +38,7 @@ angular.module('hewanlucuApp')
 		.get(url)
 		.success(function(data, status, headers, config) {
 			if (data.length>0) {
+				data = data.sort(function(a,b) { return (a['raw_created']<b['raw_created']) ? 1 : -1;});
 				$scope.after = data[data.length-1]['r_id'];
 				data.forEach(function(e){
 					$scope.items.push(e);
