@@ -1,7 +1,7 @@
 
 var DataHandler = function () {};
 
-DataHandler.prototype.count = 0
+DataHandler.prototype.moment = require('moment');
 
 DataHandler.prototype.item_transform = function (item) {
 	var result = {}
@@ -16,6 +16,7 @@ DataHandler.prototype.item_transform = function (item) {
 		result['img_urls'] = [result['raw_url'].replace('.gifv', '.gif')]
     result['ups'] = item['data']['ups']
     result['created'] = new Date(1000*item['data']['created'])
+    result['created_pretty'] = DataHandler.prototype.moment(result['created']).format('DD-MMM-YYYY hh:mm')
     result['raw_created'] = item['data']['created']
     result['mongo_created'] = new Date()
     result['permalink'] = item['data']['permalink']

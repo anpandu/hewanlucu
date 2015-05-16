@@ -56,6 +56,7 @@
 			<input type="hidden" value="{{item.r_id}}">
 			<p class="info">{{item.ups}} upvotes - <a href="{{'http://reddit.com' + item.permalink}}">{{item.num_comments}} comments</a></p>
 			<img ng-repeat="url in item.img_urls" ng-src="{{url}}"/><img>
+			<a class="info_date">{{item.created_pretty}}</a>
 		</div>
 		<div id="loadmorebox" class="card">
 			<a ng-click="loadmongo()" class="" href="">{{load_text}}</a>

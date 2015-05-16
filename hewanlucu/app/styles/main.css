@@ -132,6 +132,10 @@ div.deck {
     div.card .title:hover {
       color: #55e;
       }
+    a.info_date: {
+      text-decoration: none;
+      margin-bottom: 0px;
+      }
 
 div#loadmorebox {
   text-align: center;
