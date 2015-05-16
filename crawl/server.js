@@ -1,38 +1,59 @@
 var express = require('express');
 var fs      = require('fs');
 var request = require('request');
-var cheerio = require('cheerio');
 var app     = express();
+var FH = require('./modules/filehandler.js')
+var DB = require('./modules/database.js');
+var MongoClient = require('mongodb').MongoClient;
+var cors = require('cors')
 
 
-var Processer = require('./modules/processer.js');
+app.use(cors())
 
 
-// var url = [
-//     'http://www.reddit.com/r/aww',
-//     'http://www.reddit.com/r/aww?count=25',
-//     'http://www.reddit.com/r/aww?count=50',
-//     'http://www.reddit.com/r/aww?count=75'
-// ]
-// var url_max_length = url.length
+app.get('/get', function(req, res){
 
+    // res.json(req.query);
 
-app.get('/scrape', function(req, res){
+    // res.header('Access-Control-Allow-Origin', 'example.com');
+    // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    // res.header('Access-Control-Allow-Headers', 'Content-Type');
 
-    
+    var n = parseInt(req.query.n)
+    var after = req.query.after
+    var param = {
+        'is_album' : false,
+        'ups' : { "$gt" : 100}
+    }
 
-    request(url.shift(), function(error, response, html){
-        id = url_max_length - url.length
-        console.log(id)
-        Processer.process(id, html, error)
-
-        request(url.shift(), function(error, response, html){
-            id = url_max_length - url.length
-            console.log(id)
-            Processer.process(id, html, error)
+    FH.getconfig(function(config) {
+        db = new DB(config)
+        MongoClient.connect(db.url, function(err, db) {
+            if (after === undefined) {
+                db.collection('reddititems').find(param, {}, {'limit':n}, function(err, result) {
+                    result.toArray(function (err, res_arr) {
+                        res.json(res_arr)
+                        console.log(JSON.stringify(param))
+                    })
+                })
+            } else {
+                db.collection('reddititems').findOne({'r_id':after}, function(err, doc) {
+                    if (doc) {
+                        param['created'] = { "$lt" : doc['created'] }
+                        db.collection('reddititems').find(param, {}, {'limit':n}, function(err, result) {
+                            result.toArray(function (err, res_arr) {
+                                res.json(res_arr)
+                                console.log(JSON.stringify(param))
+                            })
+                        })
+                    }
+                    else
+                        res.json([])
+                })
+            }
         })
-		res.send('Check your console!')
     })
+
 })
 
 app.listen('8081')
