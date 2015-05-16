@@ -25,6 +25,9 @@ DataHandler.prototype.item_transform = function (item) {
     	|| result['raw_url'].indexOf('imgur.com/a/')>-1
     	|| result['raw_url'].indexOf('m.imgur.com/')>-1
     	)
+    result['is_ready'] = (
+    	result['domain'].indexOf('imgur')>-1
+    	)
 	return result
 }
 DataHandler.prototype.item_process = function (results, callback) {
