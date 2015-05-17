@@ -19,37 +19,33 @@
 				Yah, sekian tentang web ini. Walau sederhana, saya harap dapat cukup menghibur. Terimakasih.
 			</p>
 			<hr>
-			<div class="" id="">
-				<div class="">
-					<div class="">
+			<div>
+				<div>
+					<div>
 						<p>
-							<a class="">
+							<a ng-click="dropdown(0)">
 								Technologies
 							</a>
 						</p>
 					</div>
-					<div id="" class="">
-						<div class="">
-							<p>
-								Crawler : nodejs + python<br>
-								Backend : nodejs + mongodb<br>
-								Front-end : angularjs + bootstrap
-							</p>
-						</div>
+					<div style="{{(info_technologies) ? '' : 'display:none'}}">
+						<p>
+							Front-end : angular + bootstrap<br>
+							Backend : nodejs + mongodb<br>
+							Crawler : nodejs + python<br>
+						</p>
 					</div>
 				</div>
-				<div class="">
-					<div class="">
+				<div>
+					<div>
 						<p>
-							<a class="">
+							<a ng-click="dropdown(1)">
 								About
 							</a>
 						</p>
 					</div>
-					<div id="" class="">
-						<div class="">
-							<p>Dibuat sepenuh <span class="glyphicon glyphicon-heart"></span></p>
-						</div>
+					<div style="{{(info_about) ? '' : 'display:none'}}">
+						<p>Dibuat sepenuh <span class="glyphicon glyphicon-heart"></span></p>
 					</div>
 				</div>
 			</div>
@@ -66,7 +62,7 @@
 			<a class="info_date">{{item.created_pretty}}</a>
 		</div>
 		<div id="loadmorebox" class="card">
-			<a ng-click="loadmongo()" class="" href="">{{load_text}}</a>
+			<a ng-click="loadmongo()" href="">{{load_text}}</a>
 		</div>
 	</div>
 	<div class="col-md-1"></div>

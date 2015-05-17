@@ -51,4 +51,15 @@ angular.module('hewanlucuApp')
 		});	
 	}
 
+	$scope.info_technologies = false
+	$scope.info_about = false
+
+	$scope.dropdown = function (_var) {
+		if (_var==0)
+			$scope.info_technologies = ! $scope.info_technologies
+		else
+		if (_var==1)
+			$scope.info_about = ! $scope.info_about
+	}
+
   });
