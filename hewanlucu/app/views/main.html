@@ -8,7 +8,7 @@
 			<center><img id="info-image" src="images/pusheen-small.png"/></center>
 			<p>
 				Hewanlucu adalah website yang berisi, well, gambar hewan-hewan lucu.
-				Semua gambar di website ini didapat dari Reddit (<a href="http://reddit.com/r/aww">r/aww</a>).
+				Semua gambar di website ini di-<i>crawl</i> dari reddit.com (<a href="http://reddit.com/r/aww">r/aww</a>).
 			</p>
 			<p>
 				Website ini saya buat untuk mengisi waktu luang di bulan Mei 
@@ -24,7 +24,7 @@
 					<div>
 						<p>
 							<a ng-click="dropdown(0)">
-								Technologies
+								<span class="glyphicon glyphicon-menu-{{(info_technologies) ? 'right' : 'down'}}"></span> Technologies
 							</a>
 						</p>
 					</div>
@@ -40,7 +40,7 @@
 					<div>
 						<p>
 							<a ng-click="dropdown(1)">
-								About
+								<span class="glyphicon glyphicon-menu-{{(info_about) ? 'right' : 'down'}}"></span> About
 							</a>
 						</p>
 					</div>
@@ -57,9 +57,11 @@
 				<a class="title" href="{{item.raw_url}}" target="_blank">{{item.title}}</a>
 			</p>
 			<input type="hidden" value="{{item.r_id}}">
-			<p class="info">{{item.ups}} upvotes - <a href="{{'http://reddit.com' + item.permalink}}">{{item.num_comments}} comments</a></p>
+			<p class="info">
+				{{item.ups}} upvotes - <a href="{{'http://reddit.com' + item.permalink}}" target="_blank">{{item.num_comments}} comments</a>
+			</p>
 			<img ng-repeat="url in item.img_urls" ng-src="{{url}}"/><img>
-			<a class="info_date">{{item.created_pretty}}</a>
+			<div><a class="info_date"><span class="glyphicon glyphicon-time"></span> {{item.created_pretty}}</a></div>
 		</div>
 		<div id="loadmorebox" class="card">
 			<a ng-click="loadmongo()" href="">{{load_text}}</a>
