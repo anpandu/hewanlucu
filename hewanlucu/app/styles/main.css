@@ -41,7 +41,7 @@ body {
 .footer {
   padding-top: 19px;
   color: #777;
-  border-top: 1px solid #e5e5e5;
+  /*border-top: 1px solid #e5e5e5;*/
 }
 
 .container-narrow > hr {
@@ -111,6 +111,9 @@ div.deck {
       font-weight: 900;
       text-decoration: none;
       }
+    div#infobox img#info-image{
+      max-width: 182px;
+      }
   div.card {
     margin: 10px 0;
     background-color: #fff;
@@ -132,12 +135,11 @@ div.deck {
     div.card .title:hover {
       color: #55e;
       }
-    a.info_date: {
-      text-decoration: none;
-      margin-bottom: 0px;
-      }
+.info_date: {
+  color: #000;
+  text-align: center;
+  }
 
 div#loadmorebox {
   text-align: center;
 }
-
