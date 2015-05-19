@@ -4,6 +4,7 @@ var Database = function (config) {
 }
 
 Database.prototype.mongo_client = MongoClient = require('mongodb').MongoClient;
+Database.prototype.moment = require('moment');
 
 Database.prototype.test_connect = function () {
 	Database.prototype.mongo_client.connect(Database.prototype.url, function(err, db) {
@@ -24,10 +25,10 @@ Database.prototype.upsert_item = function (item) {
 	Database.prototype.mongo_client.connect(Database.prototype.url, function(err, db) {
 		db.collection('reddititems').findOne({'r_id': item['r_id']}, function(err, item_found) {
 			if (item_found) {
-				console.log('update ' + item['r_id'])
+				console.log('update ' + item['r_id'] + ' ' + Database.prototype.moment().format('dddd DD-MM-YYYY hh:mm:ss'))
 				db.collection('reddititems').update({_id: item_found['_id']}, item);
 			} else {
-				console.log('insert ' + item['r_id'])
+				console.log('insert ' + item['r_id'] + ' ' + Database.prototype.moment().format('dddd DD-MM-YYYY hh:mm:ss'))
 				db.collection('reddititems').insertOne(item, function (err, result) {
 					db.close()
 				})
