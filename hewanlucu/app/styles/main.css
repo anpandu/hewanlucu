@@ -1,3 +1,6 @@
+@import url('http://fonts.googleapis.com/css?family=Roboto');
+@import url('http://fonts.googleapis.com/css?family=Oswald');
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -108,7 +111,6 @@ div.deck {
     div#infobox .title {
       color: #000;
       font-size: 24px;
-      font-weight: 900;
       text-decoration: none;
       }
     div#infobox img#info-image{
@@ -124,13 +126,13 @@ div.deck {
     }
     div.card img {
       width: 100%;
-      /*margin-bottom: 10px;*/
+      margin-bottom: 10px;
       }
     div.card .title {
       color: #000;
       font-size: 24px;
-      font-weight: 900;
       text-decoration: none;
+      font-family: 'Oswald';
       }
     div.card .title:hover {
       color: #55e;
@@ -142,4 +144,8 @@ div.deck {
 
 div#loadmorebox {
   text-align: center;
+}
+
+p {
+  font-family: 'Roboto';
 }
