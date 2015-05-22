@@ -31,7 +31,7 @@
 					<div style="{{(info_technologies) ? '' : 'display:none'}}">
 						<p>
 							Front-end : angular + bootstrap<br>
-							Backend : nodejs + mongodb<br>
+							Back-end : nodejs + mongodb<br>
 							Crawler : nodejs + python<br>
 						</p>
 					</div>
@@ -64,7 +64,9 @@
 			<div><a class="info_date"><span class="glyphicon glyphicon-time"></span> {{item.created_pretty}}</a></div>
 		</div>
 		<div id="loadmorebox" class="card">
-			<a ng-click="loadmongo()" href="">{{load_text}}</a>
+			<center>
+				<a ng-click="loadmongo()" href="">{{load_text}}</a>
+			</center>
 		</div>
 	</div>
 	<div class="col-md-1"></div>
