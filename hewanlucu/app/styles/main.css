@@ -127,6 +127,7 @@ div.deck {
     div.card img {
       width: 100%;
       margin-bottom: 10px;
+      cursor: zoom-in;
       }
     div.card .title {
       color: #000;
@@ -148,4 +149,16 @@ div#loadmorebox {
 
 p {
   font-family: 'Roboto';
+}
+
+.modal-dialog {
+  width: 768px;
+}
+
+.modal-content {
+  border-radius: 0px;
+}
+
+.modal-body {
+  padding: 0px;
 }

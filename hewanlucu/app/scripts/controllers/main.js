@@ -8,7 +8,7 @@
  * Controller of the hewanlucuApp
  */
 angular.module('hewanlucuApp')
-  .controller('MainCtrl', function ($scope, $http) {
+  .controller('MainCtrl', function ($scope, $http, ModalService) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -60,6 +60,19 @@ angular.module('hewanlucuApp')
 		else
 		if (_var==1)
 			$scope.info_about = ! $scope.info_about
+	}
+
+	$scope.showModal = function(img) {
+		ModalService.showModal({
+			templateUrl: "views/modal_img.html",
+			controller: "ModalCtrl",
+			inputs: {
+				modal_img: img
+			}
+		}).then(function(modal) {
+			modal.element.modal()
+			modal.close.then(function(result) {})
+		})
 	}
 
   });

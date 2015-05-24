@@ -60,7 +60,7 @@
 			<p class="info">
 				{{item.ups}} upvotes - <a href="{{'http://reddit.com' + item.permalink}}" target="_blank">{{item.num_comments}} comments</a>
 			</p>
-			<img ng-repeat="url in item.img_urls" ng-src="{{url}}"/><img>
+			<img ng-click="showModal('{{url}}')" ng-repeat="url in item.img_urls" ng-src="{{url}}"/><img>
 			<div><a class="info_date"><span class="glyphicon glyphicon-time"></span> {{item.created_pretty}}</a></div>
 		</div>
 		<div id="loadmorebox" class="card">
