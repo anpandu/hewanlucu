@@ -29,7 +29,21 @@ angular.module('hewanlucuApp')
     $scope.items = [];
 	$scope.after = '';
 	$scope.load_text = 'LOAD MORE';
+	$scope.count = 0;
 
+
+	$scope.loadcount = function () {
+		$scope.count = 2000;
+		var url = 'http://107.161.27.119:8081/getcount/';
+		$http
+		.get(url)
+		.success(function(data, status, headers, config) {
+			$scope.count = data;
+		})
+		.error(function(data, status, headers, config) {
+			$scope.count = 2000;
+		});	
+	}
 
 	$scope.loadmongo = function () {
 		$scope.load_text = "loading ...";

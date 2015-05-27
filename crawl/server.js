@@ -13,12 +13,6 @@ app.use(cors())
 
 app.get('/get', function(req, res){
 
-    // res.json(req.query);
-
-    // res.header('Access-Control-Allow-Origin', 'example.com');
-    // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    // res.header('Access-Control-Allow-Headers', 'Content-Type');
-
     var n = parseInt(req.query.n)
     var after = req.query.after
     var param = {
@@ -56,6 +50,20 @@ app.get('/get', function(req, res){
 
 })
 
+
+app.get('/getcount', function(req, res){
+
+    FH.getconfig(function(config) {
+        db = new DB(config);
+        MongoClient.connect(db.url, function(err, db) {
+            db.collection('reddititems').count(function (err, count) {
+                if (err)
+                    res.json(err)
+                res.json(count)
+            })
+        })
+    })
+})
 app.listen('8081')
 console.log('Magic happens on port 8081');
 exports = module.exports = app;
