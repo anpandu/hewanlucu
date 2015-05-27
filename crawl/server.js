@@ -17,7 +17,7 @@ app.get('/get', function(req, res){
     var after = req.query.after
     var param = {
         'is_album' : false,
-        'ups' : { "$gt" : 250}
+        'ups' : { "$gt" : 300}
     }
 
     FH.getconfig(function(config) {
